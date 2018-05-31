@@ -1,0 +1,10 @@
+// Navbar module
+.navbar {
+  &__item {
+    text-decoration: none;
+  }
+
+  &__item--active {
+    font-weight: 700;
+  }
+}

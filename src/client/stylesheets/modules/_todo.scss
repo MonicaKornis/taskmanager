@@ -1,0 +1,12 @@
+// Todo module.
+.todo {
+  cursor: pointer;
+
+  &--status-complete {
+    text-decoration: line-through;
+  }
+
+  &--filtered {
+    display: none;
+  }
+}
