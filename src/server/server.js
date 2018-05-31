@@ -41,7 +41,7 @@ app.post('/todos', function(req, res) {
   }
 
   const ids = todos.map(obj => obj['id']);
-  const largest = Math.max(...ids) + 1;
+  const largest = todos.length > 0 ? Math.max(...ids) + 1 : 1;
   var newTodo = { "id": largest, "text": text, "status": "active" };
   todos.push(newTodo);
 
