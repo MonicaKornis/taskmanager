@@ -58,7 +58,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @param  {object} json - Resulting JSON from fetch
    */
   const putTodo = json => {
-    
+
     const index = todos.findIndex(todo => {
       return todo.id === json.id;
     });
@@ -96,6 +96,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
 
     api('PUT', newTodo, putTodo);
   };
+
 
   /**
    * Renders All Todos

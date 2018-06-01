@@ -11,7 +11,8 @@ const propTypes = {
   filterBy: React.PropTypes.string,
   onClickFilter: React.PropTypes.func,
   active: React.PropTypes.number,
-  complete: React.PropTypes.number
+  complete: React.PropTypes.number,
+  completeAll: React.PropTypes.func
 };
 
 /**
@@ -27,7 +28,7 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter, active, complete }) => {
+const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
   /**
    * Base CSS class
    */
@@ -41,10 +42,9 @@ const Navbar = ({ filterBy, onClickFilter, active, complete }) => {
 
   let activeItems = `  ${active} Active`;
 
-  let completedItems = `   ${complete} Completed`;
+  let completedItems = `   ${complete} Completed    `;
 
 
-debugger
   return (
     <div className={baseCls}>
       <Link
@@ -66,6 +66,9 @@ debugger
         onClick={() => onClickFilter('completed')}
       >
       {completedItems}
+      </span>
+      <span onClick={() => completeAll()}>
+        Complete All
       </span>
     </div>
   );

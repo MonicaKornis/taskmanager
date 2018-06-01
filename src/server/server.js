@@ -71,6 +71,18 @@ app.put('/todos/:id', function(req, res) {
 
 });
 
+app.put('/todos', function(req, res) {
+
+  for (let i = 0; i < todos.length; i++) {
+    todos[i].status = 'complete';
+  }
+
+  console.log(todos);
+  res.json(todos);
+});
+
+
+
 // Node server.
 var port = 3000;
 var server = app.listen(port, function() {

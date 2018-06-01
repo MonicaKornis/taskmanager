@@ -27,7 +27,7 @@ export function api(method, data, cb) {
  */
 export function getApiPromise(method, data) {
   let url = 'http://localhost:3000/todos';
-  if (['DELETE', 'PUT'].indexOf(method) !== -1) {
+  if (['DELETE', 'PUT'].indexOf(method) !== -1 && data.id !== undefined) {
     url += `/${data.id}`;
   }
 
@@ -37,7 +37,7 @@ export function getApiPromise(method, data) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }
+  };
 
   if (data) {
     options.body = JSON.stringify({
@@ -52,5 +52,5 @@ export function getApiPromise(method, data) {
     }
 
     return response.json();
-  })
-};
+  });
+}
