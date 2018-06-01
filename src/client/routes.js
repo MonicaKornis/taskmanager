@@ -8,7 +8,7 @@ import Todo from './components/todo';
 const routes = (
   <Route path="/" component={App}>
       <IndexRoute component={TodosPage} />
-      // <Route path='/todos/:id' component={Todo}/>
+      <Route path='/todos/:id' component={Todo}/>
   </Route>
 );
 

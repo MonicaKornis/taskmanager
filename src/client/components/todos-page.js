@@ -93,6 +93,7 @@ class TodosPage extends React.Component {
    * @param  {Array} todos - Array of todo objects
    */
   updateTodos(todos) {
+    debugger
     this.setState({ todos });
   }
 

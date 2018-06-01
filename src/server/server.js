@@ -30,8 +30,8 @@ app.get('/todos/:id', function(req, res) {
   const index = todos.findIndex(function(todo) {
     return todo.id === id;
   });
-  res.json(todos[index]);
 
+  res.json(todos[index]);
 });
 
 app.post('/todos', function(req, res) {
@@ -41,10 +41,9 @@ app.post('/todos', function(req, res) {
   }
 
   const ids = todos.map(obj => obj['id']);
-  const largest = todos.length > 0 ? Math.max(...ids) + 1 : 1;
-  var newTodo = { "id": largest, "text": text, "status": "active" };
+  const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1;
+  var newTodo = { "id": largestId, "text": text, "status": "active" };
   todos.push(newTodo);
-
   res.json(todos);
 });
 
@@ -56,12 +55,21 @@ app.delete('/todos/:id', function(req, res) {
   });
 
   todos.splice(index,1);
-  console.log(todos);
   res.json(todos);
 });
 
 app.put('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  const id = parseInt(req.params.id);
+  var status = req.body.data.status;
+
+  var index = todos.findIndex(function(todo) {
+    return todo.id === id;
+  });
+
+  todos[index].status = status;
+  console.log(todos);
+  res.json(todos[index]);
+
 });
 
 // Node server.

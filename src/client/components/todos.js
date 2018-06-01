@@ -58,6 +58,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @param  {object} json - Resulting JSON from fetch
    */
   const putTodo = json => {
+    debugger
     const index = todos.findIndex(todo => {
       return todo.id === json.id;
     });
@@ -88,6 +89,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = todo => {
+    debugger
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
     newTodo.archive = false;
