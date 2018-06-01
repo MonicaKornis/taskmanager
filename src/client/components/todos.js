@@ -88,12 +88,18 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    *
    * @param {object} todo - Todo object
    */
-  const onClickTodo = todo => {
-
+  const onClickTodo = (todo,action) => {
     const newTodo = Object.assign({}, todo);
-    newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
-    newTodo.archive = false;
-
+    if(action === 'complete') {
+      newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
+      newTodo.archive = false;
+      newTodo.method = 'status';
+    } else if (action === 'archive') {
+      newTodo.method = 'archive';
+      let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
+      newTodo.archive = newStatus;
+    }
+    debugger
     api('PUT', newTodo, putTodo);
   };
 

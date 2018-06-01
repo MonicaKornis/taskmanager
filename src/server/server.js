@@ -60,13 +60,16 @@ app.delete('/todos/:id', function(req, res) {
 
 app.put('/todos/:id', function(req, res) {
   const id = parseInt(req.params.id);
-  var status = req.body.data.status;
+  var method = req.body.data.method;
+  console.log(req.body.data.method);
+  console.log(req.body.data[method]);
 
   var index = todos.findIndex(function(todo) {
     return todo.id === id;
   });
 
-  todos[index].status = status;
+  console.log(todos[index]);
+  todos[index][method] = req.body.data[method];
   res.json(todos[index]);
 
 });
@@ -74,13 +77,14 @@ app.put('/todos/:id', function(req, res) {
 app.put('/todos', function(req, res) {
 
   for (let i = 0; i < todos.length; i++) {
-    todos[i].status = 'complete';
+    if(todos[i].archive !== true) {
+      todos[i].status = 'complete';
+    }
   }
 
   console.log(todos);
   res.json(todos);
 });
-
 
 
 // Node server.
