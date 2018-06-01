@@ -10,6 +10,8 @@ const noop = () => {};
 const propTypes = {
   filterBy: React.PropTypes.string,
   onClickFilter: React.PropTypes.func,
+  active: React.PropTypes.number,
+  complete: React.PropTypes.number
 };
 
 /**
@@ -25,11 +27,11 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter }) => {
+const Navbar = ({ filterBy, onClickFilter, active, complete }) => {
   /**
    * Base CSS class
    */
-  const baseCls = 'navbar'
+  const baseCls = 'navbar';
 
   let activeLinkCls = `${baseCls}__item`;
   activeLinkCls += filterBy === 'active' ? ` ${baseCls}__item--active` : '';
@@ -37,6 +39,12 @@ const Navbar = ({ filterBy, onClickFilter }) => {
   let completedLinkCls = `${baseCls}__item`;
   completedLinkCls += filterBy === 'completed' ? ` ${baseCls}__item--active` : '';
 
+  let activeItems = `  ${active} Active`;
+
+  let completedItems = `   ${complete} Completed`;
+
+
+debugger
   return (
     <div className={baseCls}>
       <Link
@@ -51,17 +59,17 @@ const Navbar = ({ filterBy, onClickFilter }) => {
         className={activeLinkCls}
         onClick={() => onClickFilter('active')}
       >
-        Active
+        {activeItems}
       </span>
       <span
         className={completedLinkCls}
         onClick={() => onClickFilter('completed')}
       >
-        Completed
+      {completedItems}
       </span>
     </div>
   );
-}
+};
 
 Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;

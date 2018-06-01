@@ -67,7 +67,6 @@ app.put('/todos/:id', function(req, res) {
   });
 
   todos[index].status = status;
-  console.log(todos);
   res.json(todos[index]);
 
 });

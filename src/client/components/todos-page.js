@@ -17,7 +17,7 @@ class TodosPage extends React.Component {
    * Base CSS class
    * @static
    */
-  static baseCls = 'todos-page'
+  static baseCls = 'todos-page';
 
   /**
    * Prop types
@@ -35,10 +35,11 @@ class TodosPage extends React.Component {
    */
   constructor(props) {
     super(props);
-
     this.state = {
       todos: [],
       filterBy: props.params.filter,
+      active: 0,
+      complete: 0
     };
 
     this.addTodo = this.addTodo.bind(this);
@@ -73,8 +74,16 @@ class TodosPage extends React.Component {
    * @param  {object} json - Resulting JSON from fetch
    */
   postTodo(json) {
-    this.setState({
-      todos: [...json],
+    this.setState((prevState) => {
+      debugger
+      const active = [...json].filter(obj => obj.status === 'active' || obj.status === undefined).length;
+      const complete = [...json].filter(obj => obj.status === 'complete').length;
+
+      return {
+        todos: [...json],
+        active: active,
+        complete: complete
+      }
     });
   }
 
@@ -93,8 +102,16 @@ class TodosPage extends React.Component {
    * @param  {Array} todos - Array of todo objects
    */
   updateTodos(todos) {
-    debugger
-    this.setState({ todos });
+    this.setState((prevState) => {
+      const active = todos.filter(obj => obj.status === 'active' || obj.status === undefined).length;
+      const complete = todos.filter(obj => obj.status === 'complete').length;
+
+      return {
+        todos: todos,
+        active: active,
+        complete: complete
+      }
+    });
   }
 
   /**
@@ -104,7 +121,8 @@ class TodosPage extends React.Component {
   render() {
     return (
       <div className={this.baseCls}>
-        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} active={this.state.active}
+        complete={this.state.complete}/>
 
         <TodoForm onSubmit={this.addTodo} />
 
