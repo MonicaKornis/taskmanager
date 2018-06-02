@@ -118,7 +118,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
     return todos.map(todo => {
       let filtered;
       let archive;
-      let error = todo.error;
+      // let error = todo.error;
       // debugger
       switch (filterBy) {
         case 'archived':

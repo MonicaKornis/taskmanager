@@ -27,6 +27,10 @@ class TodosPage extends React.Component {
     params: React.PropTypes.object,
   };
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  };
+
   /**
    * Constructor
    * @constructor
@@ -58,7 +62,6 @@ class TodosPage extends React.Component {
   }
 
   handleError(message,id) {
-    debugger
     const index = this.state.todos.findIndex(function(currentTodo) {
       return currentTodo.id === id;
     });
@@ -120,6 +123,8 @@ class TodosPage extends React.Component {
    * @param {string} filterBy - filterBy state
    */
   setFilterBy(filterBy) {
+    this.context.router.push(`/${filterBy}`);
+    // this.props.history.push(`/${filterBy}`);
     this.setState({ filterBy });
   }
 
@@ -131,9 +136,10 @@ class TodosPage extends React.Component {
   updateTodos(todos) {
     this.setState((prevState) => {
       const active = todos.filter(obj => (obj.archive !== true) &&
-                    (obj.status === 'active' || obj.status === undefined)).length;
+                      (obj.status === 'active' || obj.status === undefined)).length;
 
-      const complete = todos.filter(obj => obj.status === 'complete' && obj.archive !== true).length;
+      const complete = todos.filter(obj => obj.status === 'complete'
+                        && obj.archive !== true).length;
       debugger
       return {
         todos: todos,

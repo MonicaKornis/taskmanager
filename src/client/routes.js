@@ -1,17 +1,22 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/app';
 import TodosPage from './components/todos-page';
 import Todo from './components/todo';
 
+const NotFound = () => (
+  <h1>404.. This page is not found!</h1>);
+
 const routes = (
-  <Route path="/" component={App}>
+  <Route path="/" history={browserHistory} component={App}>
       <IndexRoute component={TodosPage} />
-      <Route path='/todos/:id' component={Todo}/>
+      <Route path="archived" component={TodosPage}/>
+      <Route path="active" component={TodosPage}/>
+      <Route path="completed" component={TodosPage}/>
+      <Route path='*' component={NotFound} />
   </Route>
 );
 
 export default routes;
 // <IndexRoute component={TodosPage} />
-// <Route path='/todos/:id' component={Todo}/>
