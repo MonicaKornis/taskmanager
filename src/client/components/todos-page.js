@@ -65,9 +65,15 @@ class TodosPage extends React.Component {
 
     let newTodos = Object.assign([],this.state.todos);
     newTodos[index].error = message;
-
     this.setState({todos: newTodos});
+
+    setTimeout(() => {
+      newTodos[index].error = '';
+      this.setState({todos: newTodos});
+    }, 3000);
   }
+
+
 
   /**
    * Add todo

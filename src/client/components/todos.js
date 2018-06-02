@@ -93,7 +93,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   const onClickTodo = (todo,action) => {
     const newTodo = Object.assign({}, todo);
     if(todo.status !== 'complete' && action === 'archive'){
-      debugger
       handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id);
     } else if(action === 'complete') {
       newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
