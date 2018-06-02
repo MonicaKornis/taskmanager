@@ -47,6 +47,7 @@ class TodosPage extends React.Component {
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   /**
@@ -54,6 +55,18 @@ class TodosPage extends React.Component {
    */
   componentDidMount() {
     api('GET', null, this.updateTodos);
+  }
+
+  handleError(message,id) {
+    debugger
+    const index = this.state.todos.findIndex(function(currentTodo) {
+      return currentTodo.id === id;
+    });
+
+    let newTodos = Object.assign([],this.state.todos);
+    newTodos[index].error = message;
+
+    this.setState({todos: newTodos});
   }
 
   /**
@@ -110,7 +123,6 @@ class TodosPage extends React.Component {
    * @param  {Array} todos - Array of todo objects
    */
   updateTodos(todos) {
-    // debugger
     this.setState((prevState) => {
       const active = todos.filter(obj => (obj.archive !== true) &&
                     (obj.status === 'active' || obj.status === undefined)).length;
@@ -141,6 +153,7 @@ class TodosPage extends React.Component {
           filterBy={this.state.filterBy}
           todos={this.state.todos}
           updateTodos={this.updateTodos}
+          handleError={this.handleError}
         />
       </div>
     );

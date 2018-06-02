@@ -2,6 +2,7 @@ import React from 'react';
 
 import { api } from '../helpers/api';
 import Todo from './todo';
+// import ErrorHandler from './error-handler';
 
 const noop = () => {};
 
@@ -13,6 +14,7 @@ const propTypes = {
   filterBy: React.PropTypes.string,
   todos: React.PropTypes.arrayOf(React.PropTypes.object),
   updateTodos: React.PropTypes.func,
+  handleError: React.PropTypes.func
 };
 
 /**
@@ -29,7 +31,7 @@ const defaultProps = {
  * Todos component
  * @returns {ReactElement}
  */
-const Todos = ({ filterBy, todos, updateTodos }) => {
+const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   /**
    * Base CSS class
    */
@@ -58,7 +60,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @param  {object} json - Resulting JSON from fetch
    */
   const putTodo = json => {
-
+    // debugger
     const index = todos.findIndex(todo => {
       return todo.id === json.id;
     });
@@ -90,17 +92,20 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    */
   const onClickTodo = (todo,action) => {
     const newTodo = Object.assign({}, todo);
-    if(action === 'complete') {
+    if(todo.status !== 'complete' && action === 'archive'){
+      debugger
+      handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id);
+    } else if(action === 'complete') {
       newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
       newTodo.archive = false;
       newTodo.method = 'status';
+      api('PUT', newTodo, putTodo);
     } else if (action === 'archive') {
       newTodo.method = 'archive';
       let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
       newTodo.archive = newStatus;
+      api('PUT', newTodo, putTodo);
     }
-    // debugger
-    api('PUT', newTodo, putTodo);
   };
 
 
@@ -110,10 +115,11 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @returns {Array} - Returns an array of Todo React Elements
    */
 
-  const renderTodos = () => {
+  const renderTodos = (handler) => {
     return todos.map(todo => {
       let filtered;
       let archive;
+      let error = todo.error;
       // debugger
       switch (filterBy) {
         case 'archived':
@@ -130,21 +136,24 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
           filtered = false;
       }
 
+      // debugger
+      let currentTodo = <Todo
+        archived={archive}
+        key={todo.id}
+        filtered={filtered}
+        onClickDelete={onClickDelete.bind(this, todo)}
+        onClickTodo={onClickTodo.bind(this, todo)}
+        status={todo.status}
+        text={todo.text}
+        error={todo.error}
+      />;
+
       return (
-        <Todo
-          archived={archive}
-          key={todo.id}
-          filtered={filtered}
-          onClickDelete={onClickDelete.bind(this, todo)}
-          onClickTodo={onClickTodo.bind(this, todo)}
-          status={todo.status}
-          text={todo.text}
-        />
+        currentTodo
       );
     });
   };
 
-  debugger
   return (
 
     <ul className={baseCls}>

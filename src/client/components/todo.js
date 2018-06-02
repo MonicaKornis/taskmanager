@@ -33,12 +33,13 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived, error }) => {
   /**
    * Base CSS class
 
    */
   const baseCls = 'todo';
+  const renderError = error === undefined ? "" : error;
 
   const todoCls = baseCls
     + (status === 'complete' ? ' todo--status-complete' : '')
@@ -46,8 +47,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived }) 
 
   return (
     <li className={todoCls} >
+      <p>{renderError}</p>
       <TodoLink text={text} onClick={(event) => onClickTodo('complete')} />
-
       <Button text="Delete" onClick={onClickDelete} />
       <Button text='Archive' onClick={(event) => onClickTodo('archive')} />
     </li>
