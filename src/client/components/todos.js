@@ -99,7 +99,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
       let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
       newTodo.archive = newStatus;
     }
-    debugger
+    // debugger
     api('PUT', newTodo, putTodo);
   };
 
@@ -113,12 +113,18 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
   const renderTodos = () => {
     return todos.map(todo => {
       let filtered;
+      let archive;
+      // debugger
       switch (filterBy) {
+        case 'archived':
+          filtered = todo.archive !== true;
+          archive = todo.archive === true ? 'archive' : '';
+          break;
         case 'active':
-          filtered = todo.status === 'complete';
+          filtered = (todo.archive === true) || (todo.status === 'complete');
           break;
         case 'completed':
-          filtered = todo.status !== 'complete';
+          filtered = (todo.archive === true) || todo.status !== 'complete';
           break;
         default:
           filtered = false;
@@ -126,6 +132,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
 
       return (
         <Todo
+          archived={archive}
           key={todo.id}
           filtered={filtered}
           onClickDelete={onClickDelete.bind(this, todo)}
@@ -137,8 +144,9 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     });
   };
 
-
+  debugger
   return (
+
     <ul className={baseCls}>
       {renderTodos()}
     </ul>

@@ -61,14 +61,11 @@ app.delete('/todos/:id', function(req, res) {
 app.put('/todos/:id', function(req, res) {
   const id = parseInt(req.params.id);
   var method = req.body.data.method;
-  console.log(req.body.data.method);
-  console.log(req.body.data[method]);
 
   var index = todos.findIndex(function(todo) {
     return todo.id === id;
   });
 
-  console.log(todos[index]);
   todos[index][method] = req.body.data[method];
   res.json(todos[index]);
 
@@ -81,8 +78,6 @@ app.put('/todos', function(req, res) {
       todos[i].status = 'complete';
     }
   }
-
-  console.log(todos);
   res.json(todos);
 });
 

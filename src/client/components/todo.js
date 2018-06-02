@@ -33,7 +33,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived }) => {
   /**
    * Base CSS class
 
@@ -45,7 +45,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
     + (filtered ? ' todo--filtered' : '');
 
   return (
-    <li className={todoCls}>
+    <li className={todoCls} >
       <TodoLink text={text} onClick={(event) => onClickTodo('complete')} />
 
       <Button text="Delete" onClick={onClickDelete} />

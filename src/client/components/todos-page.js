@@ -74,7 +74,6 @@ class TodosPage extends React.Component {
     for (let i = 0; i < newTodos.length; i++) {
       newTodos[i].status = 'completed';
     }
-    debugger
     api('PUT', newTodos, this.updateTodos);
   }
   /**
@@ -84,8 +83,9 @@ class TodosPage extends React.Component {
    */
   postTodo(json) {
     this.setState((prevState) => {
-      const active = [...json].filter(obj => obj.status === 'active' || obj.status === undefined).length;
-      const complete = [...json].filter(obj => obj.status === 'complete').length;
+      const active = [...json].filter(obj => (obj.status === 'active' || obj.status === undefined)
+                      && obj.archive !== true).length;
+      const complete = [...json].filter(obj => obj.status === 'complete' && obj.archive !== true).length;
 
       return {
         todos: [...json],
@@ -110,10 +110,12 @@ class TodosPage extends React.Component {
    * @param  {Array} todos - Array of todo objects
    */
   updateTodos(todos) {
-    debugger
+    // debugger
     this.setState((prevState) => {
-      const active = todos.filter(obj => obj.status === 'active' || obj.status === undefined).length;
-      const complete = todos.filter(obj => obj.status === 'complete').length;
+      const active = todos.filter(obj => (obj.archive !== true) &&
+                    (obj.status === 'active' || obj.status === undefined)).length;
+
+      const complete = todos.filter(obj => obj.status === 'complete' && obj.archive !== true).length;
       debugger
       return {
         todos: todos,

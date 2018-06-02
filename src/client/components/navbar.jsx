@@ -70,6 +70,12 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
       <span onClick={() => completeAll()}>
         Complete All
       </span>
+      <span
+        className={completedLinkCls}
+        onClick={() => onClickFilter('archived')}
+      >
+      Archived
+      </span>
     </div>
   );
 };
