@@ -3,10 +3,13 @@
 .navbar {
   &__item {
     text-decoration: none;
+    border-bottom: none;
   }
 
   &__item--active {
     font-weight: 700;
+    text-decoration: none;
+    border-bottom: none;
   }
 
   height: 5vh;
@@ -16,6 +19,16 @@
   font-family: $Montserrat;
   border-top: 1px solid #111213;
   border-bottom: 1px solid #0e0d0d;
+
+  &__two {
+    justify-content: space-around;
+    height: 5vh;
+    border-bottom: 1px solid #0e0d0d;
+    align-items: center;
+    display: flex;
+    font-size: inherit;
+    font-size: 1.5vw;
+  }
 }
 
 .navbar * {
@@ -27,14 +40,26 @@
   align-items: center;
   padding-top: 2px;
   font-size: 1.5vw;
+  color: black;
 }
 
 .navbar__item:hover {
   color: #03A9F4;
 }
 
+
+
 @media (max-width: 600px) {
   .navbar {
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: $Montserrat;
+    border-top: 1px solid #111213;
+    border-bottom: none;
+
     &__item {
       text-decoration: none;
     }
@@ -43,14 +68,14 @@
       font-weight: 700;
     }
 
-    height: 35vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: $Montserrat;
-    border-top: 1px solid #111213;
-    border-bottom: 1px solid #0e0d0d;
+    &__two {
+      height: 18vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: $Montserrat;
+    }
   }
 
   .navbar * {
@@ -63,5 +88,22 @@
     padding-top: 2px;
     font-size: 4vh;
     border-bottom: 1px solid black;
+    color: black;
+  }
+
+  .navbar__two * {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2px;
+    font-size: 4vh;
+    border-bottom: 1px solid black;
+  }
+
+  a.navbar__item {
+    border-bottom: none;
   }
 }

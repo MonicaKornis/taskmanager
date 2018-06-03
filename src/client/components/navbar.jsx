@@ -46,40 +46,48 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
 
 
   return (
-    <nav className={baseCls}>
-      <div className='navbar-all'>
-        <Link
-          to="/"
-          activeClassName={`${baseCls}__item--active`}
-          className={`${baseCls}__item`}
-          onClick={() => onClickFilter('')}
+    <div>
+      <nav className={baseCls}>
+        <div className='navbar-all'>
+          <Link
+            to="/"
+            activeClassName={`${baseCls}__item--active`}
+            className={`${baseCls}__item`}
+            onClick={() => onClickFilter('')}
+          >
+            All
+          </Link>
+        </div>
+        <span
+          className={activeLinkCls}
+          onClick={() => onClickFilter('active')}
         >
-          All
-        </Link>
-      </div>
-      <span
-        className={activeLinkCls}
-        onClick={() => onClickFilter('active')}
-      >
-        {activeItems}
+          {activeItems}
+        </span>
+        <span
+          className={completedLinkCls}
+          onClick={() => onClickFilter('completed')}
+        >
+        {completedItems}
       </span>
-      <span
-        className={completedLinkCls}
-        onClick={() => onClickFilter('completed')}
-      >
-      {completedItems}
-      </span>
-      <span onClick={() => completeAll()}
-        className='navbar__item navbar-complete-all'>
-        Complete All
-      </span>
-      <span
-        className={completedLinkCls + ` navbar-archived`}
-        onClick={() => onClickFilter('archived')}
-      >
-      Archived
-      </span>
-    </nav>
+        <span
+          className={completedLinkCls + ` navbar-archived`}
+          onClick={() => onClickFilter('archived')}
+        >
+        Archived
+        </span>
+      </nav>
+      <nav className={baseCls + '__two'}>
+        <span onClick={() => completeAll()}
+          className='navbar__item navbar-complete-all'>
+          Complete All
+        </span>
+        <span onClick={() => completeAll()}
+          className='navbar__item navbar-complete-all'>
+          Progress Tracker
+        </span>
+      </nav>
+  </div>
   );
 };
 
