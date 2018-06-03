@@ -7,4 +7,27 @@
   &__item--active {
     font-weight: 700;
   }
+
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: $Montserrat;
+  border-top: 1px solid #111213;
+  border-bottom: 1px solid #0e0d0d;
+}
+
+.navbar * {
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+  font-size: 2vw;
+}
+
+.navbar__item:hover {
+  color: #03A9F4;
 }

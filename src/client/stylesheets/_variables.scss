@@ -4,6 +4,7 @@ $green: #10bb07;
 $darkgray: #7b7b7b;
 $gray: #bababa;
 $lightgray: #e7e7e7;
+$light-purple: #f9f6fb;
 
 // Application colors.
 $colors: (
@@ -15,3 +16,7 @@ $colors: (
   gray: $gray,
   lightgray: $lightgray
 );
+
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+$Montserrat: 'Montserrat', sans-serif;

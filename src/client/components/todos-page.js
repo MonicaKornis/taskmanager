@@ -124,7 +124,6 @@ class TodosPage extends React.Component {
    */
   setFilterBy(filterBy) {
     this.context.router.push(`/${filterBy}`);
-    // this.props.history.push(`/${filterBy}`);
     this.setState({ filterBy });
   }
 

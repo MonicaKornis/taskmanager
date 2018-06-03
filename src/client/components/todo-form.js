@@ -66,12 +66,13 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form onSubmit={this.onSubmit} className='itemBarForm'>
+        <input className='addItemBar'
           onChange={this.onChange}
           placeholder="Add new todo..."
           value={this.state.input}
         />
+        <button onClick={this.onSubmit}className='itemBarButton'>+</button>
       </form>
     );
   }

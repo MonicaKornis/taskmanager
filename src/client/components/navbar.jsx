@@ -34,10 +34,10 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
    */
   const baseCls = 'navbar';
 
-  let activeLinkCls = `${baseCls}__item`;
+  let activeLinkCls = `${baseCls}__item navbar-active`;
   activeLinkCls += filterBy === 'active' ? ` ${baseCls}__item--active` : '';
 
-  let completedLinkCls = `${baseCls}__item`;
+  let completedLinkCls = `${baseCls}__item navbar-completed`;
   completedLinkCls += filterBy === 'completed' ? ` ${baseCls}__item--active` : '';
 
   let activeItems = `  ${active} Active`;
@@ -46,15 +46,17 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
 
 
   return (
-    <div className={baseCls}>
-      <Link
-        to="/"
-        activeClassName={`${baseCls}__item--active`}
-        className={`${baseCls}__item`}
-        onClick={() => onClickFilter('')}
-      >
-        All
-      </Link>
+    <nav className={baseCls}>
+      <div className='navbar-all'>
+        <Link
+          to="/"
+          activeClassName={`${baseCls}__item--active`}
+          className={`${baseCls}__item`}
+          onClick={() => onClickFilter('')}
+        >
+          All
+        </Link>
+      </div>
       <span
         className={activeLinkCls}
         onClick={() => onClickFilter('active')}
@@ -67,16 +69,17 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
       >
       {completedItems}
       </span>
-      <span onClick={() => completeAll()}>
+      <span onClick={() => completeAll()}
+        className='navbar__item navbar-complete-all'>
         Complete All
       </span>
       <span
-        className={completedLinkCls}
+        className={completedLinkCls + ` navbar-archived`}
         onClick={() => onClickFilter('archived')}
       >
       Archived
       </span>
-    </div>
+    </nav>
   );
 };
 

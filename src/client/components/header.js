@@ -13,9 +13,11 @@ const Header = () => {
 
   return (
     <div className={baseCls}>
-      <Link to="/">MyTodos</Link>
+      <header className='mainHeader'>
+        <img src='https://loading.io/s/icon/lw55te.png'/><Link className='headerTitle' to="/">TaskManager</Link>
+      </header>
     </div>
-  )
+  );
 };
 
 export default Header;
