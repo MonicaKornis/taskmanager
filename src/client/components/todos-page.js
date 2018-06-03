@@ -7,6 +7,7 @@ import Navbar from './navbar';
 import TodoForm from './todo-form';
 import TodoLink from './todo-link';
 import Todos from './todos';
+import Modal from './modal';
 
 /**
  * TodosPage component
@@ -43,7 +44,8 @@ class TodosPage extends React.Component {
       todos: [],
       filterBy: props.params.filter,
       active: 0,
-      complete: 0
+      complete: 0,
+      modalOpen: false
     };
 
     this.addTodo = this.addTodo.bind(this);
@@ -52,6 +54,7 @@ class TodosPage extends React.Component {
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
     this.handleError = this.handleError.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   /**
@@ -77,6 +80,14 @@ class TodosPage extends React.Component {
   }
 
 
+  toggleModal() {
+    this.setState( prevState => {
+          console.log(prevState.modalOpen);
+      return (
+        { modalOpen: !prevState.modalOpen}
+      )
+    });
+  }
 
   /**
    * Add todo
@@ -108,11 +119,12 @@ class TodosPage extends React.Component {
       const active = [...json].filter(obj => (obj.status === 'active' || obj.status === undefined)
                       && obj.archive !== true).length;
       const complete = [...json].filter(obj => obj.status === 'complete' && obj.archive !== true).length;
-
+      const archived = [...json].filter(obj => obj.archive === true);
       return {
         todos: [...json],
         active: active,
-        complete: complete
+        complete: complete,
+        archived: archived
       }
     });
   }
@@ -139,10 +151,12 @@ class TodosPage extends React.Component {
 
       const complete = todos.filter(obj => obj.status === 'complete'
                         && obj.archive !== true).length;
+      const archived = todos.filter(obj => obj.archive === true);
       return {
         todos: todos,
         active: active,
-        complete: complete
+        complete: complete,
+        archived: archived
       }
     });
   }
@@ -152,13 +166,18 @@ class TodosPage extends React.Component {
    * @returns {ReactElement}
    */
   render() {
+    let modal = this.state.modalOpen ? <Modal toggleModal={this.toggleModal} todos={this.state.todos} active={this.state.active}
+                completed={this.state.completed} archived={this.state.archived}/> : <div></div>;
+
     return (
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} active={this.state.active}
-        complete={this.state.complete} completeAll={this.completeAll}/>
+        complete={this.state.complete} completeAll={this.completeAll} toggleModal={this.toggleModal}/>
 
         <TodoForm onSubmit={this.addTodo} />
-
+        
+        {modal}
+        
         <Todos
           filterBy={this.state.filterBy}
           todos={this.state.todos}

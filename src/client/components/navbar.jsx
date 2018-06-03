@@ -28,7 +28,7 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
+const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll, toggleModal }) => {
   /**
    * Base CSS class
    */
@@ -82,7 +82,7 @@ const Navbar = ({ filterBy, onClickFilter, active, complete, completeAll }) => {
           className='navbar__item navbar-complete-all'>
           Complete All
         </span>
-        <span onClick={() => completeAll()}
+        <span onClick={() => toggleModal()}
           className='navbar__item navbar-complete-all'>
           Progress Tracker
         </span>

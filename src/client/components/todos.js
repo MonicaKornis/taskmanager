@@ -14,7 +14,7 @@ const propTypes = {
   filterBy: React.PropTypes.string,
   todos: React.PropTypes.arrayOf(React.PropTypes.object),
   updateTodos: React.PropTypes.func,
-  handleError: React.PropTypes.func
+  handleError: React.PropTypes.func, 
 };
 
 /**
@@ -80,7 +80,8 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    *
    * @param {object} todo - Todo object
    */
-  const onClickDelete = todo => {
+  const onClickDelete = (todo,event) => {
+    event.stopPropagation();
     api('DELETE', todo, deleteTodo);
   };
 
@@ -90,7 +91,8 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    *
    * @param {object} todo - Todo object
    */
-  const onClickTodo = (todo,action) => {
+  const onClickTodo = (todo,action,event) => {
+    event.stopPropagation();
     const newTodo = Object.assign({}, todo);
     if(todo.status !== 'complete' && action === 'archive'){
       handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id);

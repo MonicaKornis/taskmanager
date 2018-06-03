@@ -46,12 +46,12 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, err
     + (filtered ? ' todo--filtered' : '');
 
   return (
-    <li className={todoCls} >
+    <li className={todoCls} onClick={(event) => onClickTodo('complete',event)}>
       <div className='todo-info'>
-        <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete')}><p id='error' className='error'>{renderError}</p>
+        <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete',event)}><p id='error' className='error'>{renderError}</p>
         </TodoLink>
         <Button text="Delete" onClick={onClickDelete} />
-        <Button text='Archive' onClick={(event) => onClickTodo('archive')} />
+        <Button text='Archive' onClick={(event) => onClickTodo('archive',event)} />
       </div>
     </li>
   );
