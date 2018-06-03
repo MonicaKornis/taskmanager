@@ -1,0 +1,21 @@
+.modalBackground {
+  width: 104vh;
+  height: 146vh;
+  position: absolute;
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  top: -13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 92vw;
+  height: 60vh;
+  background: white;
+  opacity: initial;
+  z-index: 11;
+  position: fixed;
+  bottom: 16%;
+}

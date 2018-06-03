@@ -23,8 +23,8 @@ const Modal = ({ closeModal, todos }) => {
 
     return (
       <div className='modalBackground' onClick={closeModal}>
-        <div>
-          Modal
+        <div className='modal'>
+          MODAL
         </div>
       </div>
     );
