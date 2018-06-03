@@ -53,7 +53,6 @@ class TodosPage extends React.Component {
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
-    this.handleError = this.handleError.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
 
@@ -63,22 +62,6 @@ class TodosPage extends React.Component {
   componentDidMount() {
     api('GET', null, this.updateTodos);
   }
-
-  handleError(message,id) {
-    const index = this.state.todos.findIndex(function(currentTodo) {
-      return currentTodo.id === id;
-    });
-
-    let newTodos = Object.assign([],this.state.todos);
-    newTodos[index].error = message;
-    this.setState({todos: newTodos});
-
-    setTimeout(() => {
-      newTodos[index].error = '';
-      this.setState({todos: newTodos});
-    }, 3000);
-  }
-
 
   toggleModal() {
     this.setState( prevState => {

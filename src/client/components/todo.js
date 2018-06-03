@@ -15,6 +15,7 @@ const propTypes = {
   onClickTodo: React.PropTypes.func,
   status: React.PropTypes.string,
   text: React.PropTypes.string,
+  onArchiveTodo: React.PropTypes.func,
 };
 
 /**
@@ -33,7 +34,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, error }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, error, onArchiveTodo }) => {
   /**
    * Base CSS class
 
@@ -45,14 +46,16 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, err
     + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
     + (filtered ? ' todo--filtered' : '');
   const archiveButtonText = archive === true ? 'Unarchive' : 'Archive'
-
+  const toggleAction = archive === true  ? noop : onClickTodo;
+  const archiveButton = status === 'active' ? <div></div> :  
+                      <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
   return (
-    <li className={todoCls} onClick={(event) => onClickTodo('complete',event)}>
+    <li className={todoCls} onClick={(event) => toggleAction('complete',event)}>
       <div className='todo-info'>
         <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete',event)}><p id='error' className='error'>{renderError}</p>
         </TodoLink>
         <Button text="Delete" onClick={onClickDelete} />
-        <Button text={archiveButtonText} onClick={(event) => onClickTodo('archive',event)} />
+        {archiveButton}
       </div>
     </li>
   );

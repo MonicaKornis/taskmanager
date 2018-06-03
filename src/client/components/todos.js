@@ -92,6 +92,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = (todo,action,event) => {
+    debugger
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
     if(todo.status !== 'complete' && action === 'archive'){
@@ -108,6 +109,20 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
       api('PUT', newTodo, putTodo);
     }
   };
+  
+  const onArchiveTodo = (todo,action,event) => {
+    debugger
+    event.stopPropagation();
+    const newTodo = Object.assign({}, todo);
+    if(todo.status !== 'complete' && action === 'archive'){
+      handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id,e);
+    } else if (action === 'archive') {
+      newTodo.method = 'archive';
+      let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
+      newTodo.archive = newStatus;
+      api('PUT', newTodo, putTodo);
+    }
+  }
 
 
   /**
@@ -119,7 +134,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   const renderTodos = (handler) => {
     let active = todos.filter(obj => obj.status === 'active').reverse();
     let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
-    debugger
     return sortedTodos.map(todo => {
       let filtered;
       let archive = todo.archive;
@@ -141,7 +155,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
           filtered = false;
       }
 
-      debugger
       let currentTodo = <Todo
         archive={archive}
         key={todo.id}
@@ -151,6 +164,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
         status={todo.status}
         text={todo.text}
         error={todo.error}
+        onArchiveTodo={onArchiveTodo.bind(this,todo)}
       />;
 
       return (
