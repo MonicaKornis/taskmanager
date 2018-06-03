@@ -44,6 +44,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, err
   const todoCls = baseCls
     + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
     + (filtered ? ' todo--filtered' : '');
+  const archiveButtonText = archive === true ? 'Unarchive' : 'Archive'
 
   return (
     <li className={todoCls} onClick={(event) => onClickTodo('complete',event)}>
@@ -51,7 +52,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, err
         <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete',event)}><p id='error' className='error'>{renderError}</p>
         </TodoLink>
         <Button text="Delete" onClick={onClickDelete} />
-        <Button text='Archive' onClick={(event) => onClickTodo('archive',event)} />
+        <Button text={archiveButtonText} onClick={(event) => onClickTodo('archive',event)} />
       </div>
     </li>
   );
