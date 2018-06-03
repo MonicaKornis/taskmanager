@@ -27,3 +27,18 @@
   height: 80%;
   margin-left: 1vw;
 }
+
+@media (max-width: 480px) {
+  .header * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: $Montserrat;
+    color: black;
+    font-weight: lighter;
+    font-size: 8vw;
+    height: 80%;
+    margin-left: 1vw;
+  }
+}

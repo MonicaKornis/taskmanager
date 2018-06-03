@@ -38,7 +38,9 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 15vh;
+	height: 12vh;
+	margin-top: 2vh;
+	margin-bottom: 3vh;
 }
 
 .addItemBar {
@@ -49,13 +51,13 @@ html {
 	height: 5vh;
 	padding-left: 1vh;
 	font-family: inherit;
-	font-size: 3vw;
+	font-size: 3vh;
 	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .itemBarButton {
-	width: 10vh;
-	height: 10vh;
+	width: 7vw;
+	height: 7vw;
 	background: black;
 	color: white;
 	font-size: 140%;
@@ -63,4 +65,18 @@ html {
 	margin-left: -2vw;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
+}
+
+@media (max-width: 750px) {
+	.itemBarButton {
+		width: 7vh;
+		height: 7vh;
+		background: black;
+		color: white;
+		font-size: 120%;
+		-moz-border-radius: 50px;
+		margin-left: -4vw;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+	}
 }

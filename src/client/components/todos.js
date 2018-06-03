@@ -153,10 +153,11 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   };
 
   return (
-
-    <ul className={baseCls}>
-      {renderTodos()}
-    </ul>
+    <div className='items-grid'>
+      <ul className={baseCls}>
+        {renderTodos()}
+      </ul>
+    </div>
   );
 };
 

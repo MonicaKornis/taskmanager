@@ -47,8 +47,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived, er
 
   return (
     <li className={todoCls} >
-      <p>{renderError}</p>
-      <TodoLink text={text} onClick={(event) => onClickTodo('complete')} />
+      <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete')} />
+      <p className='error'>{renderError}</p>
       <Button text="Delete" onClick={onClickDelete} />
       <Button text='Archive' onClick={(event) => onClickTodo('archive')} />
     </li>
