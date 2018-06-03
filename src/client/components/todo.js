@@ -33,7 +33,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived, error }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, error }) => {
   /**
    * Base CSS class
 
@@ -42,15 +42,17 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archived, er
   const renderError = error === undefined ? "" : error;
 
   const todoCls = baseCls
-    + (status === 'complete' ? ' todo--status-complete' : '')
+    + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
     + (filtered ? ' todo--filtered' : '');
-
+    debugger
   return (
     <li className={todoCls} >
-      <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete')} />
-      <p className='error'>{renderError}</p>
-      <Button text="Delete" onClick={onClickDelete} />
-      <Button text='Archive' onClick={(event) => onClickTodo('archive')} />
+      <div className='todo-info'>
+        <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete')} />
+        <p className='error'>{renderError}</p>
+        <Button text="Delete" onClick={onClickDelete} />
+        <Button text='Archive' onClick={(event) => onClickTodo('archive')} />
+      </div>
     </li>
   );
 };

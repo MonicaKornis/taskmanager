@@ -9,11 +9,25 @@
   margin: 8px 8px;
   box-sizing: border-box;
   text-align: center;
-  background-color: white;
-  color: black;
+  color: white;
+  background: #ee0979;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  &--archieved {
+    color: black;
+    background: #ece9e6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ece9e6, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
 
   &--status-complete {
     text-decoration: line-through;
+    color: white;
+    background: #1488cc; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #1488cc, #2b32b2);
   }
 
   &--filtered {
@@ -28,7 +42,7 @@
   box-sizing: border-box;
   width: 95%;
   height: 100vh;
-  margin-left: 5vw;
+  margin-left: 3vw;
 }
 
 .todos {
@@ -38,12 +52,14 @@
   font-size: 0;
 }
 
-.todo * {
-  font-size: 1.5vw;
-}
-
 .button {
   border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.todo-link {
+  font-size: 2vw;
 }
 
 @media screen and (max-width: 1000px){
@@ -59,9 +75,24 @@
     text-align: center;
     background-color: white;
     color: black;
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    &--archieved {
+      color: black;
+      background: #ece9e6; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #ece9e6, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to top, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
 
     &--status-complete {
       text-decoration: line-through;
+      color: white;
+      background: #1488cc; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to bottom, #1488cc, #2b32b2);
     }
 
     &--filtered {
@@ -85,15 +116,13 @@
     font-size: 0;
   }
 
-  .todo * {
-    font-size: 3vw;
+  .todo-link {
+    font-size: 2vw;
   }
 
   .button {
     border: none;
   }
-
-
 }
 
 @media screen and (max-width: 600px) {
@@ -110,9 +139,31 @@
     background-color: white;
     color: black;
     font-size: -2vw;
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
     &--status-complete {
       text-decoration: line-through;
+      color: white;
+      background: #1488cc; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to bottom, #1488cc, #2b32b2);
+    }
+
+    &--archieved {
+      color: black;
+      background: #ece9e6; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #ece9e6, #ffffff); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to top, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+
+    &--status-complete:hover {
+      text-decoration: line-through;
+      color: white;
+      background-color: black;
     }
 
     &--filtered {
@@ -136,7 +187,7 @@
     font-size: 0;
   }
 
-  .todo * {
+  .todo-link {
     font-size: 3vw;
   }
 

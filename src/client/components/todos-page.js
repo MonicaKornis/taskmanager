@@ -139,7 +139,6 @@ class TodosPage extends React.Component {
 
       const complete = todos.filter(obj => obj.status === 'complete'
                         && obj.archive !== true).length;
-      debugger
       return {
         todos: todos,
         active: active,

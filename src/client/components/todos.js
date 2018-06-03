@@ -117,26 +117,28 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   const renderTodos = (handler) => {
     return todos.map(todo => {
       let filtered;
-      let archive;
+      let archive = todo.archive;
   
       switch (filterBy) {
         case 'archived':
           filtered = todo.archive !== true;
-          archive = todo.archive === true ? 'archive' : '';
+      
           break;
         case 'active':
           filtered = (todo.archive === true) || (todo.status === 'complete');
+
           break;
         case 'completed':
           filtered = (todo.archive === true) || todo.status !== 'complete';
+    
           break;
         default:
           filtered = false;
       }
 
-      // debugger
+      debugger
       let currentTodo = <Todo
-        archived={archive}
+        archive={archive}
         key={todo.id}
         filtered={filtered}
         onClickDelete={onClickDelete.bind(this, todo)}
