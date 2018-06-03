@@ -138,18 +138,6 @@
   .button {
     border: none;
   }
-
-  .error {
-    color: black;
-    font-size: 2vw;
-    color: inherit;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    position: absolute;
-    left: 5vw;
-    top: 29vh;
-  }
 }
 
 @media screen and (max-width: 600px) {
@@ -211,17 +199,6 @@
     font-size: 3vw;
   }
 
-  .error {
-    font-size: 2vw;
-    color: inherit;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    position: absolute;
-    left: 5vw;
-    top: 29vh;
-  }
-
   .button {
     border: none;
     pointer-events: none;
@@ -236,6 +213,10 @@
   width: 90%;
   position: absolute;
   left: 5vw;
-  top: 29vh;
+  top: 31vh;
   margin-top: 1vh;
+  -webkit-transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -ms-transition: opacity 2s ease-in-out;
+  -o-transition: opacity 2s ease-in-out;
 }

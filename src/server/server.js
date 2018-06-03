@@ -9,9 +9,29 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var date = new Date();
+let prior = new Date(2018,5,2);
+
+const getDateString = (dateObj) => {
+  console.log(dateObj);
+  let month = dateObj.getUTCMonth() + 1; //months from 1-12
+  let day = dateObj.getUTCDate();
+  let year = dateObj.getUTCFullYear();
+  return year + "/" + month + "/" + day;
+};
+
+date = getDateString(date);
+prior = getDateString(prior);
+
+console.log(date);
+console.log(prior);
+
 var todos = [
-  {"id": 1, "text": "Hello, world!"},
-  {"id": 2, "text": "Pick up groceries", "status": "complete"}
+  {"id": 1, "text": "Hello, world!", "status": "active", dateCompleted: undefined, dateAdded: date},
+  {"id": 2, "text": "Pick up groceries", "status": "complete", dateCompleted: date, dateAdded: prior},
+  {"id": 3, "text": "Make birthday cake", "status": "active", dateCompleted: undefined, dateAdded: prior},
+  {"id": 4, "text": "Make birthday cake", "status": "complete", dateCompleted: date, dateAdded: date},
+  {"id": 5, "text": "Clean room", "status": "active", dateCompleted: undefined, dateAdded: date},
 ];
 
 app.get('/', function(req, res) {
@@ -42,8 +62,9 @@ app.post('/todos', function(req, res) {
 
   const ids = todos.map(obj => obj['id']);
   const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1;
-  var newTodo = { "id": largestId, "text": text, "status": "active" };
+  var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: new Date() };
   todos.push(newTodo);
+  console.log(todos);
   res.json(todos);
 });
 
@@ -61,12 +82,19 @@ app.delete('/todos/:id', function(req, res) {
 app.put('/todos/:id', function(req, res) {
   const id = parseInt(req.params.id);
   var method = req.body.data.method;
+  console.log(req.body.data[method]);
+
+  var dateCompleted = req.body.data[method] === 'active' ? undefined
+                      : getDateString(new Date());
 
   var index = todos.findIndex(function(todo) {
     return todo.id === id;
   });
 
+
   todos[index][method] = req.body.data[method];
+  todos[index].dateCompleted = dateCompleted;
+  console.log(todos);
   res.json(todos[index]);
 
 });
@@ -76,9 +104,11 @@ app.put('/todos', function(req, res) {
   for (let i = 0; i < todos.length; i++) {
     if(todos[i].archive !== true) {
       todos[i].status = 'complete';
+      todos[i].dateCompleted = getDateString(new Date());
     }
   }
   res.json(todos);
+  console.log(todos);
 });
 
 

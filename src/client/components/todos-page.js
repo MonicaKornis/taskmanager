@@ -73,7 +73,7 @@ class TodosPage extends React.Component {
     setTimeout(() => {
       newTodos[index].error = '';
       this.setState({todos: newTodos});
-    }, 5000);
+    }, 3000);
   }
 
 
