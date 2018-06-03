@@ -44,7 +44,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, err
   const todoCls = baseCls
     + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
     + (filtered ? ' todo--filtered' : '');
-    debugger
+
   return (
     <li className={todoCls} >
       <div className='todo-info'>

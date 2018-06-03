@@ -115,7 +115,10 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    */
 
   const renderTodos = (handler) => {
-    return todos.map(todo => {
+    let active = todos.filter(obj => obj.status === 'active').reverse();
+    let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
+    debugger
+    return sortedTodos.map(todo => {
       let filtered;
       let archive = todo.archive;
   
