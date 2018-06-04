@@ -1,4 +1,5 @@
 import React from 'react';
+import { ApprovalIcon, HeartOutlineIcon } from 'mdi-react';
 
 const noop = () => {};
 
@@ -32,10 +33,11 @@ class TodoForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { input: '' };
+    this.state = { input: '', status: '' };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.statusChange = this.statusChange.bind(this);
   }
 
   /**
@@ -48,6 +50,9 @@ class TodoForm extends React.Component {
     });
   }
 
+  statusChange(e) {
+    this.setState({ status: e.target.value});
+  }
   /**
    * On submit handler for submitting form
    * @param  {object} e - Event object
@@ -66,14 +71,26 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
+    <div>
       <form onSubmit={this.onSubmit} className='itemBarForm'>
         <input className='addItemBar'
           onChange={this.onChange}
           placeholder="Add new todo..."
-          value={this.state.input}
-        />
+          value={this.state.input}>
+          
+      </input>
+  
+      <input type="text" onChange={this.statusChange} className='statusDropdown' placeholder='Status' name="status" list="status"/>
+      <datalist id="status">
+        <option value="Personal"> </option>
+        <option value="Work"> </option>
+        <option value="Important"> </option>
+        </datalist>
+          
         <button onClick={this.onSubmit}className='itemBarButton'>+</button>
       </form>
+      
+    </div>
     );
   }
 }

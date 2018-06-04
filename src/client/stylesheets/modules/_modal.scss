@@ -61,7 +61,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1vh;
-  font-size: 4vw;
+  font-size: 3.5vw;
 }
 
 
@@ -98,7 +98,7 @@
   height: 2vw;
   width: 24vw;
   padding: 1vw;
-  font-size: 1.2vw;
+  font-size: 1.4vw;
   color: white;
   display: flex;
   background: linear-gradient(to top, #ff6a00, #ee0979);
@@ -108,17 +108,53 @@
   background: linear-gradient(to bottom, #1488cc, #2b32b2);
 }
 
-// .active-item:hover {
-//   border: 1px solid #ccc;
-//   margin-bottom: 1vh;
-//   height: 2vw;
-//   width: 24vw;
-//   padding: 1vw;
-//   font-size: 1.2vw;
-//
-//   background: black;
-//   color: white;
-// }
+@media (max-width: 600px) {
+
+
+
+  .modalBackground {
+    width: 100vw;
+    height: 199vh;
+    position: absolute;
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    top: -17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .textContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .progressText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1vh;
+    font-size: 4.7vw;
+  }
+
+  .active-item, .completed-item {
+    border: 1px solid #ccc;
+    margin-bottom: 1vh;
+    height: 4vw;
+    width: 54vw;
+    padding: 1vw;
+    font-size: 2.8vw;
+    color: white;
+    display: flex;
+    background: linear-gradient(to top, #ff6a00, #ee0979);
+  }
+
+  .completed-item {
+    background: linear-gradient(to bottom, #1488cc, #2b32b2);
+  }
+}
 
 .progress {
   background-color: $color-progress-bg;

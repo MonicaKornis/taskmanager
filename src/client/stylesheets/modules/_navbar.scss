@@ -19,6 +19,7 @@
   font-family: $Montserrat;
   border-top: 1px solid #111213;
   border-bottom: 1px solid #0e0d0d;
+  padding: .5%;
 
   &__two {
     justify-content: space-around;
@@ -28,7 +29,9 @@
     display: flex;
     font-size: inherit;
     font-size: 1.5vw;
+    padding: .5%;
   }
+
 }
 
 .navbar * {
@@ -76,6 +79,10 @@
       flex-direction: column;
       font-family: $Montserrat;
     }
+
+    &__two:last-child {
+      border-bottom: none;
+    }
   }
 
   .navbar * {
@@ -106,4 +113,5 @@
   a.navbar__item {
     border-bottom: none;
   }
+
 }
