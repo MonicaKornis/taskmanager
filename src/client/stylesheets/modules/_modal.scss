@@ -1,3 +1,13 @@
+.mdi-icon {
+  /* Set this to have the color match the current text color */
+  fill: currentColor;
+  /* Set this to have the icon size match the current font size */
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
+}
+
+
 .modalBackground {
   width: 100vw;
   height: 150vh;
@@ -45,6 +55,70 @@
 .progressBars * {
   position: absolute;
 }
+
+.progressText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vh;
+  font-size: 4vw;
+}
+
+
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.activeHeader, .completedTodayHeader {
+  font-weight: bolder;
+  margin-bottom: 1vh;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1vh;
+}
+
+.activeList, .completedList {
+  display: flex;
+  flex-direction: column;
+}
+
+.activeItems, .completedTodayItems {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.active-item, .completed-item {
+  border: 1px solid #ccc;
+  margin-bottom: 1vh;
+  height: 2vw;
+  width: 24vw;
+  padding: 1vw;
+  font-size: 1.2vw;
+  color: white;
+  display: flex;
+  background: linear-gradient(to top, #ff6a00, #ee0979);
+}
+
+.completed-item {
+  background: linear-gradient(to bottom, #1488cc, #2b32b2);
+}
+
+// .active-item:hover {
+//   border: 1px solid #ccc;
+//   margin-bottom: 1vh;
+//   height: 2vw;
+//   width: 24vw;
+//   padding: 1vw;
+//   font-size: 1.2vw;
+//
+//   background: black;
+//   color: white;
+// }
 
 .progress {
   background-color: $color-progress-bg;

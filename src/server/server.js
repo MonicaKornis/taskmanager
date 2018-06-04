@@ -13,7 +13,6 @@ var date = new Date();
 let prior = new Date(2018,5,2);
 
 const getDateString = (dateObj) => {
-  console.log(dateObj);
   let month = dateObj.getUTCMonth() + 1; //months from 1-12
   let day = dateObj.getUTCDate();
   let year = dateObj.getUTCFullYear();
@@ -22,9 +21,6 @@ const getDateString = (dateObj) => {
 
 date = getDateString(date);
 prior = getDateString(prior);
-
-console.log(date);
-console.log(prior);
 
 var todos = [
   {"id": 1, "text": "Hello, world!", "status": "active", dateCompleted: undefined, dateAdded: date},
@@ -62,10 +58,10 @@ app.post('/todos', function(req, res) {
 
   const ids = todos.map(obj => obj['id']);
   const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1;
-  var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: new Date() };
+  var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: getDateString(new Date()) };
   todos.push(newTodo);
-  console.log(todos);
   res.json(todos);
+  console.log(todos);
 });
 
 app.delete('/todos/:id', function(req, res) {
