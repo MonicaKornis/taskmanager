@@ -65,7 +65,6 @@ class TodosPage extends React.Component {
 
   toggleModal() {
     this.setState( prevState => {
-          console.log(prevState.modalOpen);
       return (
         { modalOpen: !prevState.modalOpen}
       )

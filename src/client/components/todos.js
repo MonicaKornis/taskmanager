@@ -95,19 +95,17 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
     
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
-    if(todo.status !== 'complete' && action === 'archive'){
-      handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id);
-    } else if(action === 'complete') {
+  
+   if(action === 'complete') {
       newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
       newTodo.archive = false;
       newTodo.method = 'status';
-      api('PUT', newTodo, putTodo);
     } else if (action === 'archive') {
       newTodo.method = 'archive';
       let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
       newTodo.archive = newStatus;
-      api('PUT', newTodo, putTodo);
     }
+      api('PUT', newTodo, putTodo);
   };
   
   const onArchiveTodo = (todo,action,event) => {

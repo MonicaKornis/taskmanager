@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from './button';
 import TodoLink from './todo-link';
-import { HeartOutlineIcon } from 'mdi-react';
+import { FaceIcon, ScheduleIcon, WorkIcon, ErrorOutlineIcon } from 'mdi-react';
 
 const noop = () => {};
 
@@ -48,9 +48,9 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
    */
    
    const iconComponent = {
-     Work: <HeartOutlineIcon className='categoryIcon'/>,
-     Personal: <HeartOutlineIcon className='categoryIcon'/>,
-     Important: <HeartOutlineIcon className='categoryIcon'/>
+     Work: <WorkIcon className='categoryIcon'/>,
+     Personal: <FaceIcon className='categoryIcon'/>,
+     Important: <ErrorOutlineIcon className='categoryIcon'/>
    }
    
 
@@ -67,7 +67,7 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   const archiveButton = status === 'active' ? <div></div> : <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
   
   const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
-  const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <HeartOutlineIcon className='categoryIcon'/>;
+  const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <ScheduleIcon className='categoryIcon'/>;
   
   debugger
   
