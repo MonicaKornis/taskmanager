@@ -34,12 +34,13 @@ const Modal = ({ toggleModal, todos }) => {
 
   let numCompleted = completedTodos.length;
 
-  completedTodos = completedTodos.map((obj,i) =>
+  completedTodos =   completedTodos.length === 0 ? [<div>Nothing completed today! </div>] : completedTodos.map((obj,i) =>
                       <div key={i} className='completed-item'><ApprovalIcon />
                       <h4>{obj.text}</h4></div>);
 
-  activeTodos = activeTodos.map((obj,i) =>
+  activeTodos = activeTodos.length === 0 ? [<div>You've completed all your tasks :) </div>] : activeTodos.map((obj,i) =>
                       <div key={i} className='active-item'><HeartOutlineIcon /><h4>{obj.text}</h4></div>);
+
   let total = todos.filter(obj => obj.archive !== true).length;
 
   let percentCompleted = Math.round(numCompleted/total * 100);
