@@ -48,9 +48,9 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
    */
    
    const iconComponent = {
-     Work: <HeartOutlineIcon />,
-     Personal: <HeartOutlineIcon />,
-     Important: <HeartOutlineIcon />
+     Work: <HeartOutlineIcon className='categoryIcon'/>,
+     Personal: <HeartOutlineIcon className='categoryIcon'/>,
+     Important: <HeartOutlineIcon className='categoryIcon'/>
    }
    
 
@@ -67,7 +67,7 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   const archiveButton = status === 'active' ? <div></div> : <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
   
   const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
-  const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <div></div> ;
+  const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <HeartOutlineIcon className='categoryIcon'/>;
   
   debugger
   
