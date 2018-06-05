@@ -69,7 +69,7 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
   const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <div></div> ;
   
-  // debugger
+  debugger
   
   return (
     <li className={todoCls} onClick={(event) => toggleAction('complete',event)}>

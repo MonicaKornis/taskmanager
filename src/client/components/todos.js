@@ -136,8 +136,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
     let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
     return sortedTodos.map(todo => {
       let filtered;
-      let archive; 
-      let {  category, dateAdded, dateCompleted } = todo; 
+      let {  archive, category, dateAdded, dateCompleted } = todo; 
   
       switch (filterBy) {
         case 'archived':
