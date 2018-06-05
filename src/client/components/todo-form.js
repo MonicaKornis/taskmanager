@@ -86,7 +86,7 @@ class TodoForm extends React.Component {
         <option value="Work"> </option>
         <option value="Important"> </option>
         </datalist>
-          
+        <div className='addItemBar padding'></div>
         <button onClick={this.onSubmit}className='itemBarButton'>+</button>
       </form>
       

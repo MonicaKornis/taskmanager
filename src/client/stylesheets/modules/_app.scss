@@ -53,6 +53,7 @@ html {
 	font-family: inherit;
 	font-size: 3vh;
 	box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+	border-right: none;
 }
 
 .itemBarButton {
@@ -65,9 +66,19 @@ html {
 	margin-left: -2vw;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
+	z-index: 2;
 }
 
-
+.addItemBar.padding {
+	border-left: none;
+	width: 5vh;
+	height: 5.5vh;
+	padding-left: 1vh;
+	z-index: 0;
+	box-shadow: none;
+	margin-left: -.5vh;
+	background-color: white;
+}
 
 .statusDropdown {
 	color: #0e0e0e;
@@ -82,6 +93,7 @@ html {
   font-size: 3vh;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	font-family: $Montserrat;
+	border-right: none;
 }
 
 @media (max-width: 750px) {
@@ -95,5 +107,6 @@ html {
 		margin-left: -4vw;
 		-webkit-border-radius: 50px;
 		border-radius: 50px;
+		z-index: 2;
 	}
 }

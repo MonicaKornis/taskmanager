@@ -50,8 +50,6 @@ const Modal = ({ toggleModal, todos }) => {
   };
 
 
-
-
     return (
       <div className='modalBackground' onClick={toggleModal}>
         <div className='modal'>
