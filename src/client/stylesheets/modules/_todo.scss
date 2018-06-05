@@ -100,6 +100,9 @@
   text-decoration: none;
 }
 
+.todo-info {
+  margin-top: .2vw;
+}
 
 @media screen and (max-width: 1000px){
   .todo {
@@ -175,6 +178,11 @@
     text-decoration: line-through;
     font-size: 2vw;
   }
+
+  .categoryIcon {
+    width: 1.5em;
+    height: 1.5em;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -232,10 +240,10 @@
     font-size: 0;
   }
 
-  // .todo-link {
-  //   font-size: 4vw;
-  //   text-decoration: line-through;
-  // }
+  .todo-info {
+    margin-top: 0vh;
+    margin-bottom: 5px;
+  }
 
   .button {
     border: none;
@@ -256,8 +264,16 @@
     text-decoration: line-through;
     font-size: 4vw;
   }
+
+  .categoryIcon {
+    width: 2em;
+    height: 2em;
+  }
+
 }
 
-.categoryIcon {
-  // position: absolute;
+@media screen and (min-width: 2000px) {
+  .todo-info {
+    margin-top: 5vh;
+  }
 }
