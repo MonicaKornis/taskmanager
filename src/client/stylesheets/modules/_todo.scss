@@ -24,7 +24,6 @@
   }
 
   &--status-complete {
-    text-decoration: line-through;
     color: white;
     background: #1488cc; /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
@@ -46,6 +45,7 @@
     left: 5vw;
     top: 29vh;
   }
+
 
 }
 
@@ -76,6 +76,30 @@
   font-size: 2vw;
 }
 
+.todo-link-line {
+  text-decoration: line-through;
+  font-size: 2vw;
+}
+
+.todoFooter {
+  color: inherit;
+  background-color: inherit;
+  height: 6vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5vw;
+  text-decoration: none;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#date.date {
+  font-size: .8vw;
+  text-decoration: none;
+}
+
 
 @media screen and (max-width: 1000px){
   .todo {
@@ -103,7 +127,6 @@
     }
 
     &--status-complete {
-      text-decoration: line-through;
       color: white;
       background: #1488cc; /* fallback for old browsers */
       background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
@@ -138,6 +161,20 @@
   .button {
     border: none;
   }
+
+  #date.date {
+    font-size: 1.3vw;
+    text-decoration: none;
+  }
+
+  .todo-link {
+    font-size: 2vw;
+  }
+
+  .todo-link-line {
+    text-decoration: line-through;
+    font-size: 2vw;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -160,7 +197,7 @@
 
 
     &--status-complete {
-      text-decoration: line-through;
+      // text-decoration: line-through;
       color: white;
       background: #1488cc; /* fallback for old browsers */
       background: -webkit-linear-gradient(to bottom, #1488cc, #2b32b2); /* Chrome 10-25, Safari 5.1-6 */
@@ -195,29 +232,28 @@
     font-size: 0;
   }
 
-  .todo-link {
-    font-size: 4vw;
-  }
+  // .todo-link {
+  //   font-size: 4vw;
+  //   text-decoration: line-through;
+  // }
 
   .button {
     border: none;
     pointer-events: none;
     z-index: 1;
   }
-}
 
-#error.error {
-  color: black;
-  font-size: 1.3vw;
-  padding: 0;
-  margin: 0;
-  width: 90%;
-  position: absolute;
-  left: 5vw;
-  top: 31vh;
-  margin-top: 1vh;
-  -webkit-transition: opacity 2s ease-in-out;
-  -moz-transition: opacity 2s ease-in-out;
-  -ms-transition: opacity 2s ease-in-out;
-  -o-transition: opacity 2s ease-in-out;
+  #date.date {
+    font-size: 1.9vw;
+    text-decoration: none;
+  }
+
+  .todo-link {
+    font-size: 4vw;
+  }
+
+  .todo-link-line {
+    text-decoration: line-through;
+    font-size: 4vw;
+  }
 }

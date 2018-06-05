@@ -60,7 +60,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param  {object} json - Resulting JSON from fetch
    */
   const putTodo = json => {
-    // debugger
+    // 
     const index = todos.findIndex(todo => {
       return todo.id === json.id;
     });
@@ -92,7 +92,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = (todo,action,event) => {
-    debugger
+    
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
     if(todo.status !== 'complete' && action === 'archive'){
@@ -136,7 +136,8 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
     let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
     return sortedTodos.map(todo => {
       let filtered;
-      let archive = todo.archive;
+      let archive; 
+      let {  category, dateAdded, dateCompleted } = todo; 
   
       switch (filterBy) {
         case 'archived':
@@ -153,10 +154,16 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
           break;
         default:
           filtered = false;
+
       }
+      
+      // debugger
 
       let currentTodo = <Todo
         archive={archive}
+        category={category}
+        dateAdded={dateAdded}
+        dateCompleted={dateCompleted}
         key={todo.id}
         filtered={filtered}
         onClickDelete={onClickDelete.bind(this, todo)}

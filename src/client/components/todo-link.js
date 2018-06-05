@@ -9,6 +9,7 @@ const noop = () => {};
 const propTypes = {
   onClick: React.PropTypes.func,
   text: React.PropTypes.string,
+  line: React.PropTypes.string,
 };
 
 /**
@@ -18,17 +19,18 @@ const propTypes = {
 const defaultProps = {
   onClick: noop,
   text: '',
+  line: ''
 };
 
 /**
  * Link component
  * @returns {ReactElement}
  */
-const TodoLink = ({ text, onClick, children }) => {
+const TodoLink = ({ text, onClick, children, line  }) => {
   /**
    * Base CSS class
    */
-  const baseCls = 'todo-link';
+  const baseCls = 'todo-link' + line;
 
   return (
     <div className={baseCls} onClick={onClick}>

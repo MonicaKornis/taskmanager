@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from './button';
 import TodoLink from './todo-link';
+import { HeartOutlineIcon } from 'mdi-react';
 
 const noop = () => {};
 
@@ -16,6 +17,9 @@ const propTypes = {
   status: React.PropTypes.string,
   text: React.PropTypes.string,
   onArchiveTodo: React.PropTypes.func,
+  category: React.PropTypes.string,
+  dateAdded: React.PropTypes.string,
+  dateCompleted: React.PropTypes.string
 };
 
 /**
@@ -34,28 +38,47 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, archive, error, onArchiveTodo }) => {
+ 
+
+
+const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onClickTodo, status, text, archive, error, onArchiveTodo }) => {
   /**
    * Base CSS class
-
+   
    */
+   
+   const iconComponent = {
+     Work: <HeartOutlineIcon />,
+     Personal: <HeartOutlineIcon />,
+     Important: <HeartOutlineIcon />
+   }
+   
+
   const baseCls = 'todo';
   const renderError = error === undefined ? "" : error;
 
   const todoCls = baseCls
     + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
     + (filtered ? ' todo--filtered' : '');
+    
+  const todoLink = status === 'complete' ? `-line` : ``;
   const archiveButtonText = archive === true ? 'Unarchive' : 'Archive'
   const toggleAction = archive === true  ? noop : onClickTodo;
-  const archiveButton = status === 'active' ? <div></div> :  
-                      <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
+  const archiveButton = status === 'active' ? <div></div> : <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
+  
+  const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
+  const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <div></div> ;
+  
+  // debugger
+  
   return (
     <li className={todoCls} onClick={(event) => toggleAction('complete',event)}>
       <div className='todo-info'>
-        <TodoLink className='todoLink' text={text} onClick={(event) => onClickTodo('complete',event)}><p id='error' className='error'>{renderError}</p>
+        <TodoLink  text={text} onClick={(event) => onClickTodo('complete',event)} className={todoLink} line={todoLink}><p id='error' className='error'>{renderError}</p>
         </TodoLink>
         <Button text="Delete" onClick={onClickDelete} />
         {archiveButton}
+        <div className='todoFooter'>{categoryComponent}<div id='date' className='date'>{date}</div></div>
       </div>
     </li>
   );

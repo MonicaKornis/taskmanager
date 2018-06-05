@@ -48,7 +48,7 @@ const Modal = ({ toggleModal, todos }) => {
     width: `${percentCompleted}%`
   };
 
-debugger
+
 
 
     return (

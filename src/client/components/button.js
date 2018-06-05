@@ -29,6 +29,8 @@ const Button = ({ text, onClick }) => {
    * Base CSS class
    */
   const baseCls = 'button';
+  
+  debugger
 
   return (
     <button className={baseCls} onClick={onClick}>

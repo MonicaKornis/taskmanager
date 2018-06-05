@@ -77,12 +77,12 @@ class TodosPage extends React.Component {
    *
    * @param  {string} text - Todo text
    */
-  addTodo(text) {
-    if (!text) {
+  addTodo(todo) {
+    
+    if (!todo.input) {
       return;
-    }
-
-    api('POST', { text }, this.postTodo);
+    } 
+    api('POST', todo , this.postTodo);
   }
 
   completeAll() {

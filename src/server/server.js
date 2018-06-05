@@ -51,14 +51,15 @@ app.get('/todos/:id', function(req, res) {
 });
 
 app.post('/todos', function(req, res) {
-  var text = req.body.data.text;
+  var text = req.body.data.input;
+  var category = req.body.data.category;
   if (!text) {
     return res.status(400).json({"message": "text is required"});
   }
 
   const ids = todos.map(obj => obj['id']);
   const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1;
-  var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: getDateString(new Date()) };
+  var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: getDateString(new Date()), category: category };
   todos.push(newTodo);
   res.json(todos);
   console.log(todos);

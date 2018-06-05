@@ -33,11 +33,11 @@ class TodoForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { input: '', status: '' };
+    this.state = { input: '', category: '' };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.statusChange = this.statusChange.bind(this);
+    this.categoryChange = this.categoryChange.bind(this);
   }
 
   /**
@@ -50,8 +50,8 @@ class TodoForm extends React.Component {
     });
   }
 
-  statusChange(e) {
-    this.setState({ status: e.target.value});
+  categoryChange(e) {
+    this.setState({ category: e.target.value});
   }
   /**
    * On submit handler for submitting form
@@ -60,9 +60,9 @@ class TodoForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.input);
-
-    this.setState({ input: '' });
+    this.props.onSubmit(this.state);
+    
+    this.setState({ input: '', category: '' });
   }
 
   /**
@@ -80,7 +80,7 @@ class TodoForm extends React.Component {
           
       </input>
   
-      <input type="text" onChange={this.statusChange} className='statusDropdown' placeholder='Status' name="status" list="status"/>
+      <input type="text" onChange={this.categoryChange} className='statusDropdown' placeholder='Status' name="status" list="status"/>
       <datalist id="status">
         <option value="Personal"> </option>
         <option value="Work"> </option>
