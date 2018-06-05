@@ -9,6 +9,7 @@ const noop = () => {};
 const propTypes = {
   onClick: React.PropTypes.func,
   text: React.PropTypes.string,
+  
 };
 
 /**
@@ -30,7 +31,7 @@ const Button = ({ text, onClick }) => {
    */
   const baseCls = 'button';
   
-
+// debugger
 
   return (
     <button className={baseCls} onClick={onClick}>

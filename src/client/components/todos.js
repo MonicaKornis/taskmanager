@@ -81,7 +81,8 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param {object} todo - Todo object
    */
   const onClickDelete = (todo,event) => {
-    event.stopPropagation();
+    debugger
+    // event.stopPropagation();
     api('DELETE', todo, deleteTodo);
   };
 
@@ -92,7 +93,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = (todo,action,event) => {
-    
+    debugger
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
   
