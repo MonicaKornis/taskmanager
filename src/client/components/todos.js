@@ -82,7 +82,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    */
   const onClickDelete = (todo,event) => {
     debugger
-    // event.stopPropagation();
+    event.stopPropagation();
     api('DELETE', todo, deleteTodo);
   };
 
@@ -93,24 +93,26 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param {object} todo - Todo object
    */
   const onClickTodo = (todo,action,event) => {
-    debugger
+    // debugger
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
-  
-   if(action === 'complete') {
+    if(todo.archive === true ) {
+      return ;
+    } else if(action === 'complete') {
       newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
       newTodo.archive = false;
       newTodo.method = 'status';
+      api('PUT', newTodo, putTodo);
     } else if (action === 'archive') {
       newTodo.method = 'archive';
       let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
       newTodo.archive = newStatus;
-    }
       api('PUT', newTodo, putTodo);
+    }
   };
   
   const onArchiveTodo = (todo,action,event) => {
-    debugger
+    // debugger
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
     if(todo.status !== 'complete' && action === 'archive'){

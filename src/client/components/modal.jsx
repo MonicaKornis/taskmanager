@@ -27,10 +27,10 @@ const getDateString = (dateObj) => {
 const Modal = ({ toggleModal, todos }) => {
   let today = getDateString(new Date());
 
-  let activeTodos = todos.filter((obj,i) => obj.status === 'active');
+  let activeTodos = todos.filter((obj,i) => obj.status === 'active').slice(0,7);
 
   let completedTodos = todos.filter(obj => obj.status === 'complete' && obj.archive !== true &&
-                      obj.dateCompleted === today);
+                      obj.dateCompleted === today).slice(0,7);
 
   let numCompleted = completedTodos.length;
 

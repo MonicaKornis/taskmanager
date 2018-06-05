@@ -72,7 +72,7 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   debugger
   
   return (
-    <li className={todoCls} >
+    <li className={todoCls} onClick={(event) => onClickTodo('complete',event)}>
       <div className='todo-info'>
         <TodoLink  text={text} onClick={(event) => onClickTodo('complete',event)} className={todoLink} line={todoLink}><p id='error' className='error'>{renderError}</p>
         </TodoLink>
