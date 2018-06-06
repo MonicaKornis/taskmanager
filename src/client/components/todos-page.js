@@ -76,8 +76,7 @@ class TodosPage extends React.Component {
    *
    * @param  {string} text - Todo text
    */
-  addTodo(todo) {
-    
+  addTodo(todo) {  
     if (!todo.input) {
       return;
     } 
@@ -148,8 +147,7 @@ class TodosPage extends React.Component {
    * @returns {ReactElement}
    */
   render() {
-    let modal = this.state.modalOpen ? <Modal toggleModal={this.toggleModal} todos={this.state.todos} active={this.state.active}
-                completed={this.state.completed} archived={this.state.archived}/> : <div></div>;
+    let modal = this.state.modalOpen ? <Modal toggleModal={this.toggleModal} todos={this.state.todos} /> : <div></div>;
 
     return (
       <div className={this.baseCls}>
@@ -164,7 +162,6 @@ class TodosPage extends React.Component {
           filterBy={this.state.filterBy}
           todos={this.state.todos}
           updateTodos={this.updateTodos}
-          handleError={this.handleError}
         />
       </div>
     );

@@ -57,8 +57,8 @@ app.post('/todos', function(req, res) {
     return res.status(400).json({"message": "text is required"});
   }
 
-  const ids = todos.map(obj => obj['id']);
-  const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1;
+  const ids = todos.map(obj => obj['id']); //list of todo ids
+  const largestId = todos.length > 0 ? Math.max(...ids) + 1 : 1; //adds 1 to the largest id
   var newTodo = { "id": largestId, "text": text, "status": "active", dateAdded: getDateString(new Date()), category: category };
   todos.push(newTodo);
   res.json(todos);
@@ -71,24 +71,25 @@ app.delete('/todos/:id', function(req, res) {
     return todo.id === id;
   });
 
-  todos.splice(index,1);
+  todos.splice(index,1); //remove todo
   res.json(todos);
 });
 
 app.put('/todos/:id', function(req, res) {
   const id = parseInt(req.params.id);
-  var method = req.body.data.method;
+  var method = req.body.data.method; // either status or archive
 
 
   var dateCompleted = req.body.data[method] === 'active' ? undefined
-                      : getDateString(new Date());
+                      : getDateString(new Date()); // if new todo is active set
+  //set complete date to undefined
 
   var index = todos.findIndex(function(todo) {
     return todo.id === id;
   });
 
 
-  todos[index][method] = req.body.data[method];
+  todos[index][method] = req.body.data[method]; //set todo value in backend to the value in new todo
   todos[index].dateCompleted = dateCompleted;
   res.json(todos[index]);
 
@@ -96,7 +97,7 @@ app.put('/todos/:id', function(req, res) {
 
 app.put('/todos', function(req, res) {
 
-  for (let i = 0; i < todos.length; i++) {
+  for (let i = 0; i < todos.length; i++) { // set all todos in backend to completed 
     if(todos[i].archive !== true) {
       todos[i].status = 'complete';
       todos[i].dateCompleted = getDateString(new Date());

@@ -5,9 +5,6 @@ import App from './components/app';
 import TodosPage from './components/todos-page';
 import Todo from './components/todo';
 
-const NotFound = () => (
-  <h1>404.. This page is not found!</h1>);
-
 const routes = (
   <Route path="/" history={browserHistory} component={App}>
       <IndexRoute component={TodosPage} />
@@ -18,4 +15,4 @@ const routes = (
 );
 
 export default routes;
-// <IndexRoute component={TodosPage} />
+

@@ -6,7 +6,7 @@ import 'stylesheets/style.scss';
 
 import Routes from './routes';
 
-const main = <Router history={browserHistory} routes={Routes} />;
+const main = <Router history={browserHistory} routes={Routes} />; 
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(main, document.getElementById('main'));

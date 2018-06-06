@@ -13,8 +13,7 @@ const noop = () => {};
 const propTypes = {
   filterBy: React.PropTypes.string,
   todos: React.PropTypes.arrayOf(React.PropTypes.object),
-  updateTodos: React.PropTypes.func,
-  handleError: React.PropTypes.func, 
+  updateTodos: React.PropTypes.func
 };
 
 /**
@@ -43,9 +42,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    * @param  {object} json - Resulting JSON from fetch
    */
   const deleteTodo = json => {
-    const index = todos.findIndex(todo => {
-      return todo.id === json.id;
-    });
 
     updateTodos(
       [
@@ -118,8 +114,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    */
 
   const renderTodos = (handler) => {
-    // let active = todos.filter(obj => obj.status === 'active').reverse();
-    // let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
     // 
     return todos.map(todo => {
       let filtered;
@@ -127,7 +121,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
   
       switch (filterBy) {
         case 'archived':
-          filtered = todo.archive !== true;
+          filtered = todo.archive !== true; //everything that isn't archived is going to be filtered 
       
           break;
         case 'active':
@@ -156,7 +150,6 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
         onClickTodo={onClickTodo.bind(this, todo)}
         status={todo.status}
         text={todo.text}
-        error={todo.error}
         onArchiveTodo={onArchiveTodo.bind(this,todo)}
       />;
 

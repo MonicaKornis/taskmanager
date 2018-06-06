@@ -41,7 +41,7 @@ const defaultProps = {
  
 
 
-const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onClickTodo, status, text, archive, error, onArchiveTodo }) => {
+const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onClickTodo, status, text, archive, onArchiveTodo }) => {
   /**
    * Base CSS class
    
@@ -55,7 +55,6 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
    
 
   const baseCls = 'todo';
-  const renderError = error === undefined ? "" : error;
 
   const todoCls = baseCls
     + (archive === true ? ' todo--archieved' : (status === 'complete' ? ' todo--status-complete' : ''))
@@ -68,7 +67,7 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   
   const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
   const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <ScheduleIcon className='categoryIcon'/>;
-  const toggleActive = archive === false ? (event) => onClickTodo(event) : noop; 
+
 
   
   return (
