@@ -10,7 +10,7 @@
 
 .modalBackground {
   width: 100vw;
-  height: 150vh;
+  height: 170vh;
   position: absolute;
   z-index: 10;
   background: rgba(0,0,0,0.5);
@@ -22,7 +22,7 @@
 
 .modal {
   width: 70vw;
-  height: 60vh;
+  height: 66vh;
   background: white;
   opacity: initial;
   z-index: 11;
@@ -40,13 +40,13 @@
     margin: 0 auto;
     padding: 0 20px;
     width: 88%;
+    margin-bottom: 16px;
 }
 
 .completeProgressBar {
   height: 3vh;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0px;
 }
 
 .progressBars {
