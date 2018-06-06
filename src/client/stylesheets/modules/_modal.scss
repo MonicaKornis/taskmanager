@@ -126,6 +126,22 @@
     align-items: center;
   }
 
+  .modal {
+    width: 70vw;
+    height: 68vh;
+    background: white;
+    opacity: initial;
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 13%;
+    font-size: 1em;
+    padding-top: 20px;
+  }
+
   .textContainer {
     display: flex;
     justify-content: space-between;
@@ -144,10 +160,10 @@
   .active-item, .completed-item {
     border: 1px solid #ccc;
     margin-bottom: 1vh;
-    height: 4vw;
+    height: 3.7vw;
     width: 54vw;
     padding: 1vw;
-    font-size: 2.8vw;
+    font-size: 2.1vw;
     color: white;
     display: flex;
     background: linear-gradient(to top, #ff6a00, #ee0979);
