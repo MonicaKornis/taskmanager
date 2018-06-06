@@ -43,7 +43,7 @@ const Modal = ({ toggleModal, todos }) => {
 
   let total = todos.filter(obj => obj.archive !== true).length;
 
-debugger
+
 
   let percentCompleted = total !== 0 ? Math.round(numCompleted/total * 100) : 100;
 

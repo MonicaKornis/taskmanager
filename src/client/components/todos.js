@@ -143,7 +143,7 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
 
       }
       
-      // debugger
+      // 
 
       let currentTodo = <Todo
         archive={archive}

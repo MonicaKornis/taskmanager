@@ -31,7 +31,7 @@ const Button = ({ text, onClick }) => {
    */
   const baseCls = 'button';
   
-// debugger
+// 
 
   return (
     <button className={baseCls} onClick={onClick}>
