@@ -27,23 +27,25 @@ const getDateString = (dateObj) => {
 const Modal = ({ toggleModal, todos }) => {
   let today = getDateString(new Date());
 
-  let activeTodos = todos.filter((obj,i) => obj.status === 'active').slice(0,7);
+  let activeTodos = todos.filter(obj => obj.status === 'active').slice(0,7);
 
   let completedTodos = todos.filter(obj => obj.status === 'complete' && obj.archive !== true &&
                       obj.dateCompleted === today).slice(0,7);
 
   let numCompleted = completedTodos.length;
 
-  completedTodos =   completedTodos.length === 0 ? [<div>Nothing completed today! </div>] : completedTodos.map((todo,i) =>
+  completedTodos =   completedTodos.length === 0 ? [<div key={79}>Nothing completed today! </div>] : completedTodos.map((todo,i) =>
                       <div key={todo.id} className='completed-item'><ApprovalIcon />
                       <h4>{todo.text}</h4></div>);
 
-  activeTodos = activeTodos.length === 0 ? [<div>You've completed all your tasks :) </div>] : activeTodos.map((todo,i) =>
-                      <div key={todo.id} className='active-item'><HeartOutlineIcon /><h4>{todo.text}</h4></div>);
+  activeTodos = activeTodos.length === 0 ? [<div key={77}>You've completed all your tasks :) </div>] : activeTodos.map((todo,i) =>
+                      <div key={todo.id} className='active-item'><HeartOutlineIcon key={todo.id}/><h4>{todo.text}</h4></div>);
 
   let total = todos.filter(obj => obj.archive !== true).length;
 
-  let percentCompleted = Math.round(numCompleted/total * 100);
+debugger
+
+  let percentCompleted = total !== 0 ? Math.round(numCompleted/total * 100) : 100;
 
   let styles = {
     width: `${percentCompleted}%`
