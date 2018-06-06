@@ -34,12 +34,12 @@ const Modal = ({ toggleModal, todos }) => {
 
   let numCompleted = completedTodos.length;
 
-  completedTodos =   completedTodos.length === 0 ? [<div>Nothing completed today! </div>] : completedTodos.map((obj,i) =>
-                      <div key={i} className='completed-item'><ApprovalIcon />
-                      <h4>{obj.text}</h4></div>);
+  completedTodos =   completedTodos.length === 0 ? [<div>Nothing completed today! </div>] : completedTodos.map((todo,i) =>
+                      <div key={todo.id} className='completed-item'><ApprovalIcon />
+                      <h4>{todo.text}</h4></div>);
 
-  activeTodos = activeTodos.length === 0 ? [<div>You've completed all your tasks :) </div>] : activeTodos.map((obj,i) =>
-                      <div key={i} className='active-item'><HeartOutlineIcon /><h4>{obj.text}</h4></div>);
+  activeTodos = activeTodos.length === 0 ? [<div>You've completed all your tasks :) </div>] : activeTodos.map((todo,i) =>
+                      <div key={todo.id} className='active-item'><HeartOutlineIcon /><h4>{todo.text}</h4></div>);
 
   let total = todos.filter(obj => obj.archive !== true).length;
 

@@ -91,37 +91,23 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    *
    * @param {object} todo - Todo object
    */
-  const onClickTodo = (todo,action,event) => {
-    // debugger
+  const onClickTodo = (todo,event) => {
     event.stopPropagation();
+    if(todo.archive === true ) return; 
     const newTodo = Object.assign({}, todo);
-    if(todo.archive === true ) {
-      return ;
-    } else if(action === 'complete') {
-      newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
-      newTodo.archive = false;
-      newTodo.method = 'status';
-      api('PUT', newTodo, putTodo);
-    } else if (action === 'archive') {
-      newTodo.method = 'archive';
-      let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
-      newTodo.archive = newStatus;
-      api('PUT', newTodo, putTodo);
-    }
+    newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
+    newTodo.archive = false;
+    newTodo.method = 'status';
+    api('PUT', newTodo, putTodo);
   };
   
-  const onArchiveTodo = (todo,action,event) => {
-    // debugger
+  const onArchiveTodo = (todo,event) => {
     event.stopPropagation();
     const newTodo = Object.assign({}, todo);
-    if(todo.status !== 'complete' && action === 'archive'){
-      handleError(`Ooops! You can't archive tasks that haven't been completed!`,todo.id,e);
-    } else if (action === 'archive') {
-      newTodo.method = 'archive';
-      let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
-      newTodo.archive = newStatus;
-      api('PUT', newTodo, putTodo);
-    }
+    newTodo.method = 'archive';
+    let newStatus = newTodo.archive === undefined ? true : !newTodo.archive;
+    newTodo.archive = newStatus;
+    api('PUT', newTodo, putTodo);
   }
 
 
@@ -132,9 +118,10 @@ const Todos = ({ filterBy, todos, updateTodos, handleError}) => {
    */
 
   const renderTodos = (handler) => {
-    let active = todos.filter(obj => obj.status === 'active').reverse();
-    let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
-    return sortedTodos.map(todo => {
+    // let active = todos.filter(obj => obj.status === 'active').reverse();
+    // let sortedTodos = active.concat(todos.filter(obj => obj.status !== 'active'));
+    // 
+    return todos.map(todo => {
       let filtered;
       let {  archive, category, dateAdded, dateCompleted } = todo; 
   

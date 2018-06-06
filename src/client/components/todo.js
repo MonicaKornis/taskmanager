@@ -64,17 +64,17 @@ const Todo = ({ category, dateAdded, dateCompleted,filtered, onClickDelete, onCl
   const todoLink = status === 'complete' ? `-line` : ``;
   const archiveButtonText = archive === true ? 'Unarchive' : 'Archive'
   const toggleAction = archive === true  ? noop : onClickTodo;
-  const archiveButton = status === 'active' ? <div></div> : <Button text={archiveButtonText} onClick={(event) => onArchiveTodo('archive',event)}/>;
+  const archiveButton = status === 'active' ? <div></div> : <Button text={archiveButtonText} onClick={(event) => onArchiveTodo(event)}/>;
   
   const date = status === 'active' ? `Added: ${dateAdded}` : `Completed: ${dateCompleted}`;
   const categoryComponent = iconComponent[category] !== undefined ? iconComponent[category] : <ScheduleIcon className='categoryIcon'/>;
-  
-  debugger
+  const toggleActive = archive === false ? (event) => onClickTodo(event) : noop; 
+
   
   return (
-    <li className={todoCls} onClick={(event) => onClickTodo('complete',event)}>
+    <li className={todoCls} onClick={(event) => onClickTodo(event)}>
       <div className='todo-info'>
-        <TodoLink  text={text} onClick={(event) => onClickTodo('complete',event)} className={todoLink} line={todoLink}><p id='error' className='error'>{renderError}</p>
+        <TodoLink  text={text} className={todoLink} line={todoLink}>
         </TodoLink>
         <Button text="Delete" onClick={onClickDelete} />
         {archiveButton}

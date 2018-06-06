@@ -79,7 +79,7 @@ app.delete('/todos/:id', function(req, res) {
 app.put('/todos/:id', function(req, res) {
   const id = parseInt(req.params.id);
   var method = req.body.data.method;
-  console.log(req.body.data[method]);
+  // console.log(req.body.data[method]);
 
   var dateCompleted = req.body.data[method] === 'active' ? undefined
                       : getDateString(new Date());
@@ -91,7 +91,7 @@ app.put('/todos/:id', function(req, res) {
 
   todos[index][method] = req.body.data[method];
   todos[index].dateCompleted = dateCompleted;
-  console.log(todos);
+  // console.log(todos);
   res.json(todos[index]);
 
 });
