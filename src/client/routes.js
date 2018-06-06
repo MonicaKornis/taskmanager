@@ -14,7 +14,6 @@ const routes = (
       <Route path="archived" component={TodosPage}/>
       <Route path="active" component={TodosPage}/>
       <Route path="completed" component={TodosPage}/>
-      // <Route path='*' component={NotFound} />
   </Route>
 );
 
