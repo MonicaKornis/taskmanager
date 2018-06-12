@@ -5,9 +5,9 @@ Taskmanager is a web application that was built to help people organize and mana
   
 ## How To Use 
 
-Simply download the files from github and then..
- &nbsp; **Npm install**
- &nbsp; **Npm start**
+Simply download the files from github and then..\s\s
+ &nbsp; **Npm install**\s\s
+ &nbsp; **Npm start**\s\s
 
 
 ## Features 
