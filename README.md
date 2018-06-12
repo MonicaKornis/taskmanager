@@ -9,11 +9,11 @@ Taskmanager is a web application that was built to help people organize and mana
     
   * Tasks can be labeled as important, personal, or work related. 
   
-       ![Bilby Stampede](https://i.imgur.com/KcmsTW4.gif)
+       ![Bilby Stampede](https://i.imgur.com/CvF8wrH.gif)
   
   * Each task is color coded. Red means that it is still active and blue indicates that it has been completed. Archived tasks       are 
  
-       ![Bilby Stampede](https://i.imgur.com/yDIZFbQ.jpg)
+       ![Bilby Stampede](https://i.imgur.com/KcmsTW4.gif)
     
   * By clicking on 'Progress Tracker' in the navbar, the user can see how many tasks they have completed today as well as what     percentage of tasks they have left to complete. 
   
