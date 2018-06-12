@@ -1,7 +1,7 @@
 
 # TaskManager
 
-Taskmanager is a web application that was built to help people organize and manage tasks in their daily lives. React was used to create the UI and Express was used to create the routes/server. 
+Taskmanager is a web application that was built to help people organize and manage tasks in their daily lives. React was used to create the UI and Express was used to create the backend routes/server. 
   
 ## How To Use 
 
