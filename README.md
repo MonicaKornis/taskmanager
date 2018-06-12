@@ -20,7 +20,7 @@ Simply download the files from github and then **npm install** and **npm start**
        ![Bilby Stampede](https://i.imgur.com/KcmsTW4.gif)
     
   * By clicking on 'Progress Tracker' in the navbar, the user can see how many tasks they have completed today as well as what     percentage of tasks they have left to complete. 
-       ![Bilby Stampede](https://i.imgur.com/ka8og2x.png | width=80)
+       ![Bilby Stampede](https://i.imgur.com/Itcm9oH.png)
   
  
 ## Technologies 
