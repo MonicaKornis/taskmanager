@@ -5,17 +5,17 @@ Taskmanager is a web application that was built to help people organize and mana
   
 ## How To Use 
 
-Simply download the files from github and then **Npm install** and **Npm start**.
+Simply download the files from github and then **npm install** and **npm start**.
 
 
 ## Features 
   * Users are able to create, archive, and delete tasks. 
     
-  * Tasks can be labeled as important, personal, or work related. 
+  * Tasks can be labeled as important, personal, or work related.
   
        ![Bilby Stampede](https://i.imgur.com/CvF8wrH.gif)
   
-  * Each task is color coded. Red means that it is still active and blue indicates that it has been completed. Archived tasks       are 
+  * Each task is color coded. Red means that the task is still active and blue indicates that it has been completed. Tasks can     be toggled from active to complete with a single click. Archived tasks displayed with a grey background and can be             unarchived at any time. 
  
        ![Bilby Stampede](https://i.imgur.com/KcmsTW4.gif)
     
