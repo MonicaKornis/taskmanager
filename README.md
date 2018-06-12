@@ -3,6 +3,12 @@
 
 Taskmanager is a web application that was built to help people organize and manage tasks in their daily lives. React was used to create the UI and Express was used to create the routes/server. 
   
+## How To Use 
+
+Simply download the files from github and then..
+Npm install 
+Npm start
+
 
 ## Features 
   * Users are able to create, archive, and delete tasks. 
